@@ -33,6 +33,7 @@
      and Open you VSCode -> Connect to WSL -> Open folder `bof`  and catch file bof1, bof2, bof3 from `https://github.com/quang-ute/Security-labs/tree/main/Software/buffer-overflow`
 ## Attack ( BOF 1 )
 ![image](https://github.com/user-attachments/assets/3ca0dd01-c5b1-4abd-adcb-757f64f60c0d)
+
 If an attacker supplies more input than the buffer array[200] can handle, they could potentially control the flow of the program and execute unintended code.
 
 1. On `/seclabs/bof$`
@@ -72,6 +73,7 @@ If an attacker supplies more input than the buffer array[200] can handle, they c
 > Since buf is only 40 characters in size, but fgets allows input of up to 45 characters, this can overwrite the memory after the buf array, including the check variable. If you enter enough data to overwrite the value of check, you can change it to 0xdeadbeef, leading to the condition being satisfied and printing the winning message.
 
 1.  On `/seclabs/bof$`
+2.  
    ```bash
    gcc -g bof2.c -o bof2.out -fno-stack-protector -mpreferred-stack-boundary=2
    ```
@@ -87,11 +89,18 @@ Terminal will be return  `You are on the right way!`
 
 
 If you want to print `Yeah! You win!`
+
 echo $(python -c "print('a'*40 + '\xef\xbe\xad\xde' )") | ./bof2.out
+
 ![image](https://github.com/user-attachments/assets/57848a21-9021-4c9c-994a-555c01043102)
 
 
  ## Attack ( BOF 3 )    
+
+![image](https://github.com/user-attachments/assets/f4404c2e-5f35-4527-b695-be72686df0ba)
+
+
+ 
 The first of all, you have to run 
 ```bash
 objdump -d bof3.out | grep shell
