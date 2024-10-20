@@ -120,3 +120,111 @@ son ' , password = 'c22b5f9178342609428d6f51b2c5af4c0bde6a42' where name='Boby' 
 
 
 
+4.5. Countermeasure – Prepared Statement
+
+
+![image](https://github.com/user-attachments/assets/e44d37c4-daa6-40a9-95b2-9dae628f460d)
+
+
+![image](https://github.com/user-attachments/assets/10283733-2f68-4018-8e2b-c11f24f8aa21)
+
+```php
+<?php
+// Function to create a sql connection.
+function getDB() {
+  $dbhost="10.9.0.6";
+  $dbuser="seed";
+  $dbpass="dees";
+  $dbname="sqllab_users";
+
+  // Create a DB connection
+  $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error . "\n");
+  }
+  return $conn;
+}
+
+$input_uname = $_GET['username'];
+$input_pwd = $_GET['Password'];
+$hashed_pwd = sha1($input_pwd);
+
+// create a connection
+$conn = getDB();
+
+// Prepare the SQL statement
+$stmt = $conn->prepare("SELECT id, name, eid, salary, ssn FROM credential WHERE name = ? AND Password = ?");
+if ($stmt === false) {
+    die("Prepare failed: " . htmlspecialchars($conn->error));
+}
+
+// Bind parameters
+$stmt->bind_param("ss", $input_uname, $hashed_pwd); // "ss" means two strings
+
+// Execute the statement
+$stmt->execute();
+
+// Get the result
+$result = $stmt->get_result();
+// do the query
+//$result = $conn->query("SELECT id, name, eid, salary, ssn
+//                        FROM credential
+//                        WHERE name= '$input_uname' and Password= '$hashed_pwd'");
+if ($result->num_rows > 0) {
+  // only take the first row
+  $firstrow = $result->fetch_assoc();
+  $id     = $firstrow["id"];
+  $name   = $firstrow["name"];
+  $eid    = $firstrow["eid"];
+  $salary = $firstrow["salary"];
+  $ssn    = $firstrow["ssn"];
+}
+
+
+// close the sql connection
+$stmt->close();
+$conn->close();
+?>
+```
+
+change this code  
+
+
+
+```php
+// Prepare the SQL statement
+$stmt = $conn->prepare("SELECT id, name, eid, salary, ssn FROM credential WHERE name = ? AND Password = ?");
+if ($stmt === false) {
+    die("Prepare failed: " . htmlspecialchars($conn->error));
+}
+
+// Bind parameters
+$stmt->bind_param("ss", $input_uname, $hashed_pwd); // "ss" means two strings
+
+// Execute the statement
+$stmt->execute();
+
+// Get the result
+$result = $stmt->get_result();
+// do the query
+//$result = $conn->query("SELECT id, name, eid, salary, ssn
+//                        FROM credential
+//                        WHERE name= '$input_uname' and Password= '$hashed_pwd'");
+
+
+
+
+
+
+$stmt->close();
+
+
+```
+![image](https://github.com/user-attachments/assets/db627429-6bfe-4c30-8f21-2798e37b5e1e)
+
+
+
+
+
+
+
