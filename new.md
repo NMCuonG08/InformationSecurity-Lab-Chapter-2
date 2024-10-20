@@ -228,3 +228,23 @@ $stmt->close();
 
 
 
+
+
+
+Web security – XSS – File Upload Vulnerabilitie 
+
+
+<script>
+  console.log(document.cookie);
+</script>
+
+
+
+
+
+
+
+
+
+
+
