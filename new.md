@@ -281,5 +281,67 @@ Web security – XSS – File Upload Vulnerabilitie
 4.3.1.c 
 
 
+![image](https://github.com/user-attachments/assets/4ee22b2c-6e01-4fa4-b78a-75a2c7ac4fe3)
+![image](https://github.com/user-attachments/assets/8e12de44-8abf-4313-bc78-7327737c9730)
+
+
+![image](https://github.com/user-attachments/assets/cd52be04-3b2b-4639-af8a-c41c9c557312)
+
+
+
+![image](https://github.com/user-attachments/assets/aa8f4be1-77fd-42b6-a496-fcd51eba2cd2)
+
+```php
+
+<h2>Stored XSS Demo</h2>
+<?php
+  if (isset($_POST['submit'])) {
+    // Sanitize input before storing it
+    $comment = htmlspecialchars($_POST['comment'], ENT_QUOTES, 'UTF-8');
+
+    // Store the sanitized comment in the comments.txt file
+    $file = fopen("comments.txt", "a");
+    fwrite($file, $comment . PHP_EOL);
+    fclose($file);
+  }
+
+  echo "Recent comments:<br>";
+
+  // Read comments from the file and display them
+  $file = fopen("comments.txt", "r");
+  if ($file) {
+    while (($line = fgets($file)) !== false) {
+      echo nl2br($line) . "<br>"; // Use nl2br to maintain newlines
+    }
+    fclose($file);
+  } else {
+    echo "File error!";
+  }
+?>
+
+<form method="POST" action="">
+  <hr>
+  <label for="comment">Leave a comment:</label><br>
+  <textarea name="comment" id="comment" style="width:500px; height:300px"></textarea><br>
+  <input type="submit" name="submit" value="Submit">
+</form>
+
+```
+
+
+
+![image](https://github.com/user-attachments/assets/32bc6f95-c1ee-411e-97d5-09fa51995091)
+
+![image](https://github.com/user-attachments/assets/733ba8e1-37f3-4e00-a265-2d147f821b9a)
+
+
+
+4.4 Fileupload Attac
+
+
+
+
+
+
 
 
