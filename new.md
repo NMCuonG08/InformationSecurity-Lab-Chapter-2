@@ -86,6 +86,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
    console.log(document.cookie)
 
+4.4.1. Modify your own salary.
+
+![image](https://github.com/user-attachments/assets/dfc5832f-4204-4ed6-a1e8-f36776b8cd6d)
+
+
+![image](https://github.com/user-attachments/assets/4636f1c2-4c86-45bf-91b1-d3b995e00d42)
 
 
 
