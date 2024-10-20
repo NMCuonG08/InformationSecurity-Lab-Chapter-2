@@ -336,7 +336,91 @@ Web security – XSS – File Upload Vulnerabilitie
 
 
 
-4.4 Fileupload Attac
+4.4 Fileupload Attack
+
+![image](https://github.com/user-attachments/assets/d40c24c0-ce7f-4d13-a0f7-4190ce301dd8)
+
+
+![image](https://github.com/user-attachments/assets/98adbba4-8850-40f7-bb96-e716b5314a76)
+
+
+
+![image](https://github.com/user-attachments/assets/d7eb044a-5305-4fd6-908d-3ed63e96f1ec)
+
+
+```php
+<?php
+if (isset($_POST['submit'])) {
+    $target_dir = "uploads/";
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+    // Allowed file types
+    $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
+
+    // Validate file type by extension
+    if (!in_array($imageFileType, $allowedTypes)) {
+        echo "Sorry, only JPG, JPEG, PNG, and GIF files are allowed.";
+        $uploadOk = 0;
+    }
+
+    // Validate MIME type for extra security
+    $fileMimeType = mime_content_type($_FILES["fileToUpload"]["tmp_name"]);
+    $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+
+    if (!in_array($fileMimeType, $allowedMimeTypes)) {
+        echo "Invalid file type detected!";
+        $uploadOk = 0;
+    }
+
+    // Check file size (500KB max)
+    if ($_FILES["fileToUpload"]["size"] > 500000) {
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+    } else {
+        // Attempt to move uploaded file to the target directory
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload Form</title>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        <label for="fileToUpload">Select an image file to upload:</label>
+        <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
+        <input type="submit" value="Upload Image" name="submit">
+    </form>
+</body>
+</html>
+```
+
+
+
+![image](https://github.com/user-attachments/assets/9673b35f-a1aa-4b7c-a51e-d67e38cafe27)
+
+
+
+
+
+
+
+
+
 
 
 
