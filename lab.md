@@ -191,7 +191,12 @@ wsl
 sudo apt install sqlmap
 ```
 
+4. Fetch the url of webiste you want to attack
 
+![image](https://github.com/user-attachments/assets/7990b9c9-d27f-4129-be3f-03c756477149)
+
+
+Enter any value for this to retun a url : `http://localhost/vulnerabilities/sqli/?id=1`
 
 
 **Question 2**: Use sqlmap to get tables, users information
