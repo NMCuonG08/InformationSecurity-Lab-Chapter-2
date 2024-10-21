@@ -282,5 +282,21 @@ Retrun all columns and all row of table named users
 **Question 3**: Make use of John the Ripper to disclose the password of all database users from the above exploit
 **Answer 3**:
 
+## 1. Dowload John the Ripper
+
+
+```bash
+sudo apt-get install john
+```
+![image](https://github.com/user-attachments/assets/65108fed-599b-41b1-8439-885bfa231c6d)
+
+Download successfully
+
+![image](https://github.com/user-attachments/assets/f5bdf571-2e8c-40c4-b9f5-21599a900992)
+
+Make format to use John the Ripper 
+
+
+
 
 
