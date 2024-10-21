@@ -72,6 +72,7 @@ _start:
 - Compile asm program and C program to executable code. 
 - Conduct the attack so that when C program is executed, the /etc/passwd file is copied to /tmp/pwfile. You are free to choose Code Injection or Environment Variable approach to do. 
 - Write step-by-step explanation and clearly comment on instructions and screenshots that you have made to successfully accomplished the attack.
+  
 **Answer 1**: Must conform to below structure:
 
 ## 1.Create a Vulnerable C Program
@@ -97,6 +98,60 @@ gcc -o redundant_code redundant_code.c -fno-stack-protector -z execstack
 nano asm_code.c
 ```
 ![image](https://github.com/user-attachments/assets/d431ef63-ede5-4b1c-ad05-3e1ba676f77f)
+
+## 4. Compile the Assembly Code 
+
+* Save the assembly code in a file named asm_code.asm, and then assemble and link it:
+
+```bash
+nasm -f elf32 -o asm_code.o asm_code.asm
+ld -m elf_i386 -o asm_code asm_code.o
+```
+
+## 5. Load redundant_code  to gdb
+
+```bash
+gdb ./redundant_code
+```
+You need to find the address of the `redundant_code` binary in memory. This address will be used in the exploit string to redirect execution to the payload. To do this, you can use a debugger like `gdb`:
+## 6. Finding the Address of the Payload
+
+
+```bash
+ break redundant_code
+run $(python -c "print('A'*72)")
+p &buffer
+```
+
+![image](https://github.com/user-attachments/assets/1c2622c2-8880-49e1-8d64-32e16e20a848)
+
+
+Inside `gdb`, set a breakpoint in the `redundant_code`, run the program with a dummy argument, and find the address of your payload. This will typically be after the buffer size.
+
+Make a note of the address is `0xf7fcc5b4`; you'll use it in the next step.
+
+## 7. Execute the Vulnerable Program with the Payload
+
+
+
+
+Run the vulnerable program with the crafted payload:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
