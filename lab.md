@@ -189,6 +189,7 @@ docker run -d -p 80:80 vulnerables/web-dvwa
 
 
 2. Access DVWA
+
 Open a web browser and go to: http://localhost
 Log in with the default credentials:
 
@@ -196,7 +197,13 @@ Username: admin
 
 Password: password
 
+![image](https://github.com/user-attachments/assets/621fccaa-4c6a-4af0-80c0-679b52944d1b)
+
+This is page Login to DVWA
+
 ![image](https://github.com/user-attachments/assets/0a765301-2d1b-44b7-a8ef-5b020f4ce2d9)
+
+This home page to set up database
 
 3. Install SQLMap in WSL
 
@@ -213,6 +220,12 @@ sudo apt install sqlmap
 Enter any value for this to retun a url : `http://localhost/vulnerabilities/sqli/?id=1`
 
 5. Get information about all available databases
+
+
+![image](https://github.com/user-attachments/assets/50a4a548-b017-4cf1-9a9c-c3cde8af9d2d)
+
+Get cookie value of website: PHPSESSID=8i0tfhbnhtb8oe03hmukldr8n3
+
 
 ```bash
 sqlmap -u "http://localhost:8080/vulnerabilities/sqli" --cookie="PHPSESSID=8i0tfhbnhtb8oe03hmukldr8n3; security=medium " --data="id=1&Submit=Submit" --dbs
