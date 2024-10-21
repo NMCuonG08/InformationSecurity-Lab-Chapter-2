@@ -168,6 +168,31 @@ cat /etc/outfile
 
 **Question 1**: Use sqlmap to get information about all available databases
 **Answer 1**:
+1.  Pull the DVWA Docker image
+```bash
+docker pull vulnerables/web-dvwa
+docker run -d -p 80:80 vulnerables/web-dvwa
+```
+![image](https://github.com/user-attachments/assets/54f77e65-1050-4959-aac1-4685fc0c55b7)
+
+2. Access DVWA
+Open a web browser and go to: http://localhost
+Log in with the default credentials:
+
+Username: admin
+Password: password
+
+![image](https://github.com/user-attachments/assets/0a765301-2d1b-44b7-a8ef-5b020f4ce2d9)
+
+3. Install SQLMap in WSL
+
+```bash
+wsl
+sudo apt install sqlmap
+```
+
+
+
 
 **Question 2**: Use sqlmap to get tables, users information
 **Answer 2**:
