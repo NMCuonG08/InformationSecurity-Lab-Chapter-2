@@ -161,12 +161,12 @@ cat /tmp/outfile
 
 ![image](https://github.com/user-attachments/assets/56fa25ea-0a95-44ba-a009-1a78bd406e6a)
 
-- The /etc/passwd file is copied to /tmp/outfile.
+ The /etc/passwd file is copied to /tmp/outfile.
 
 
 
 
-**Conclusion**: comment text about the screenshot or simply answered text for the question
+
 
 # Task 2: Attack on database of DVWA
 - Install dvwa (on host machine or docker container)
