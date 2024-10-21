@@ -74,14 +74,53 @@ _start:
 - Write step-by-step explanation and clearly comment on instructions and screenshots that you have made to successfully accomplished the attack.
 **Answer 1**: Must conform to below structure:
 
-Description text (optional)
+## 1.Create a Vulnerable C Program
 
+```bash
+nano redundant_code.c
+```
+![image](https://github.com/user-attachments/assets/2e434b7b-7ddf-4675-8e55-54fbc71d3579)
 
-``` 
-    code block (optional)
+Create a C program that contains a buffer overflow vulnerability
+
+## 2.  Compile the C Program
+
+```bash
+gcc -o redundant_code redundant_code.c -fno-stack-protector -z execstack
 ```
 
-output screenshot (optional)
+## 3. Create the Assembly Payload
+
+* Now, create an assembly program that will copy /etc/passwd to /tmp/pwfile. Here’s the assembly code
+
+```bash
+nano asm_code.c
+```
+![image](https://github.com/user-attachments/assets/d431ef63-ede5-4b1c-ad05-3e1ba676f77f)
+
+
+
+
+
+
+
+
+```bash
+gcc -g redundant_code.c -o redundant_code.out -fno-stack-protector -mpreferred-stack-boundary=2
+./redundant_code.out "AAAAAAAAAAAAAAA"
+./redundant_code.out "AAAAAAAAAAAAAAAAAAAAAA"
+```
+![image](https://github.com/user-attachments/assets/b823e414-1f98-44b3-b543-f2a5c2cd23c5)
+
+```bash
+nasm -f elf32 asm_code.asm -o asm_code.o
+ld -m elf_i386 asm_code.o -o asm_code
+```
+![image](https://github.com/user-attachments/assets/45156517-4e64-49af-8d50-ff77915cd2be)
+
+## 2.Conduct the attack so that when C program is executed, the /etc/passwd file is copied to /tmp/pwfile. You are free to choose Code Injection or Environment Variable approach to do.
+
+
 
 **Conclusion**: comment text about the screenshot or simply answered text for the question
 
