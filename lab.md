@@ -158,35 +158,6 @@ cat /etc/outfile
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-```bash
-gcc -g redundant_code.c -o redundant_code.out -fno-stack-protector -mpreferred-stack-boundary=2
-./redundant_code.out "AAAAAAAAAAAAAAA"
-./redundant_code.out "AAAAAAAAAAAAAAAAAAAAAA"
-```
-![image](https://github.com/user-attachments/assets/b823e414-1f98-44b3-b543-f2a5c2cd23c5)
-
-```bash
-nasm -f elf32 asm_code.asm -o asm_code.o
-ld -m elf_i386 asm_code.o -o asm_code
-```
-![image](https://github.com/user-attachments/assets/45156517-4e64-49af-8d50-ff77915cd2be)
-
-## 2.Conduct the attack so that when C program is executed, the /etc/passwd file is copied to /tmp/pwfile. You are free to choose Code Injection or Environment Variable approach to do.
-
-
-
 **Conclusion**: comment text about the screenshot or simply answered text for the question
 
 # Task 2: Attack on database of DVWA
