@@ -165,7 +165,7 @@ cat /tmp/outfile
 
 
 
-
+`Conclusion `: In this exercise, I successfully demonstrated how exploiting vulnerabilities in a C program using a Code Injection or Environment Variable attack can lead to unauthorized actions, such as copying the /etc/passwd file to /tmp/pwfile. This highlights the critical importance of secure coding practices, input validation, and system-level protections like ASLR and stack canaries. Proper permissions and security measures are essential to prevent such attacks and protect sensitive data.
 
 
 # Task 2: Attack on database of DVWA
@@ -297,6 +297,6 @@ Download successfully
 Make format to use John the Ripper 
 
 
-
+`Conclusion`: In this exercise, I demonstrated the process of exploiting SQL injection vulnerabilities in DVWA using SQLMap to gather database information, including tables and user details. Following this, I utilized John the Ripper to crack the database users' passwords. This practical approach emphasizes the need for secure coding, proper database configuration, and the importance of securing web applications against SQL injection attacks to protect sensitive information from being compromised.
 
 
