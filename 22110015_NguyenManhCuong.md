@@ -296,7 +296,7 @@ Download successfully
 
 ![image](https://github.com/user-attachments/assets/f5bdf571-2e8c-40c4-b9f5-21599a900992)
 
-You can see the password has been hashed next to it
+## 3. You can see the password has been hashed next to it
 
 ![image](https://github.com/user-attachments/assets/6cc7d095-7303-412c-b869-86585f1db2f8)
 
