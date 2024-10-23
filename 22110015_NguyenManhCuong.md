@@ -292,9 +292,15 @@ sudo apt-get install john
 
 Download successfully
 
+## 2. Make format to use John the Ripper 
+
 ![image](https://github.com/user-attachments/assets/f5bdf571-2e8c-40c4-b9f5-21599a900992)
 
-Make format to use John the Ripper 
+You can see the password has been hashed next to it
+
+![image](https://github.com/user-attachments/assets/6cc7d095-7303-412c-b869-86585f1db2f8)
+
+
 
 
 `Conclusion`: In this exercise, I demonstrated the process of exploiting SQL injection vulnerabilities in DVWA using SQLMap to gather database information, including tables and user details. Following this, I utilized John the Ripper to crack the database users' passwords. This practical approach emphasizes the need for secure coding, proper database configuration, and the importance of securing web applications against SQL injection attacks to protect sensitive information from being compromised.
