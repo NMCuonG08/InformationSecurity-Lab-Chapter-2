@@ -294,11 +294,19 @@ Download successfully
 
 ## 2. Make format to use John the Ripper 
 
-![image](https://github.com/user-attachments/assets/f5bdf571-2e8c-40c4-b9f5-21599a900992)
+![image](https://github.com/user-attachments/assets/96d9bbab-0846-497c-9ff4-fd688a34939b)
+
 
 ## 3. You can see the password has been hashed next to it
 
-![image](https://github.com/user-attachments/assets/6cc7d095-7303-412c-b869-86585f1db2f8)
+--format: Specifies the type of hashing algorithm used. John the Ripper supports various formats, including raw-md5, sha256, bcrypt, and more. Specifying the correct format is essential for accurate cracking.
+
+```hash
+.\john.exe --format=raw-md5 C:\Users\ASUS\Downloads\hash.txt
+```
+
+![image](https://github.com/user-attachments/assets/6f691a82-63d9-4f8d-8290-272dab4fbb2f)
+
 
 
 
