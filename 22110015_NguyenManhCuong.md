@@ -290,6 +290,9 @@ sudo apt-get install john
 ```
 ![image](https://github.com/user-attachments/assets/65108fed-599b-41b1-8439-885bfa231c6d)
 
+or on windown download from `https://download.openwall.net/pub/projects/john/contrib/windows/` 
+
+
 Download successfully
 
 ## 2. Make format to use John the Ripper 
